@@ -35,7 +35,6 @@ function App() {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        {/* 🔑 CYPRESS TARGET */}
         <button
           type="submit"
           id="next"
