@@ -3,25 +3,24 @@ import React, { useState } from "react";
 function App() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [fullName, setFullName] = useState("");
+  const [showResult, setShowResult] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevents page reload
+    e.preventDefault();
 
-    // Custom validation
     if (firstName.trim() === "" || lastName.trim() === "") {
-      setFullName("");
+      setShowResult(false);
       return;
     }
 
-    setFullName(`${firstName} ${lastName}`);
+    setShowResult(true);
   };
 
   return (
     <div>
-      <h2>Enter Your Name</h2>
+      {/* REQUIRED INITIAL TEXT */}
+      <h2>Full Name Display</h2>
 
-      {/* FORM ELEMENT */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -30,8 +29,6 @@ function App() {
           onChange={(e) => setFirstName(e.target.value)}
         />
 
-        <br /><br />
-
         <input
           type="text"
           placeholder="Last Name"
@@ -39,15 +36,16 @@ function App() {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        <br /><br />
-
         <button type="submit">Submit</button>
+
+        {/* CONDITIONAL OUTPUT (VERY IMPORTANT STRUCTURE) */}
+        {showResult && (
+          <>
+            <br />
+            Full Name: {firstName} {lastName}
+          </>
+        )}
       </form>
-
-      <br />
-
-      {/* Display only when both fields are filled */}
-      {fullName && <h3>Full Name: {fullName}</h3>}
     </div>
   );
 }
