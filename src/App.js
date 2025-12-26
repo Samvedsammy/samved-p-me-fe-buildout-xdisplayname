@@ -21,7 +21,6 @@ function App() {
       <h1>Full Name Display</h1>
 
       <form onSubmit={handleSubmit}>
-        {/* First Name row */}
         <label>
           First Name:&nbsp;
           <input
@@ -33,7 +32,6 @@ function App() {
 
         <br />
 
-        {/* Last Name row */}
         <label>
           Last Name:&nbsp;
           <input
@@ -45,17 +43,13 @@ function App() {
 
         <br />
 
-        {/* Button */}
-        <button
+        {/* 🔑 THIS IS WHAT CYPRESS EXPECTS */}
+        <input
           type="submit"
-          id="next"
           name="next"
-          data-testid="next"
-        >
-          Submit
-        </button>
+          value="Submit"
+        />
 
-        {/* Output */}
         {showResult && (
           <>
             <br />
