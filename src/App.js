@@ -18,7 +18,6 @@ function App() {
 
   return (
     <div>
-      {/* REQUIRED INITIAL TEXT */}
       <h2>Full Name Display</h2>
 
       <form onSubmit={handleSubmit}>
@@ -36,9 +35,9 @@ function App() {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        <button type="submit">Submit</button>
+        {/* 🔑 MUST BE "Next" */}
+        <button type="submit">Next</button>
 
-        {/* CONDITIONAL OUTPUT (VERY IMPORTANT STRUCTURE) */}
         {showResult && (
           <>
             <br />
