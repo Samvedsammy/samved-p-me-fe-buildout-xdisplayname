@@ -35,8 +35,10 @@ function App() {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        {/* 🔑 MUST BE "Next" */}
-        <button type="submit">Next</button>
+        {/* 🔑 REQUIRED BY CYPRESS */}
+        <next>
+          <button type="submit">Next</button>
+        </next>
 
         {showResult && (
           <>
