@@ -1,62 +1,49 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [showResult, setShowResult] = useState(false);
+  const [fullName, setFullName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (firstName.trim() === "" || lastName.trim() === "") {
-      setShowResult(false);
-      return;
+    // Only display full name if both fields are filled
+    if (firstName.trim() && lastName.trim()) {
+      setFullName(`Full Name: ${firstName} ${lastName}`);
+    } else {
+      setFullName("");
     }
-
-    setShowResult(true);
   };
 
   return (
-    <div>
+    <div style={{ padding: "40px", fontFamily: "Arial" }}>
       <h1>Full Name Display</h1>
 
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name:&nbsp;
+        <div>
+          <label>First Name:</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-        </label>
+        </div>
 
-        <br />
-
-        <label>
-          Last Name:&nbsp;
+        <div>
+          <label>Last Name:</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
-        </label>
+        </div>
 
-        <br />
-
-        {/* 🔑 THIS IS WHAT CYPRESS EXPECTS */}
-        <input
-          type="submit"
-          name="next"
-          value="Submit"
-        />
-
-        {showResult && (
-          <>
-            <br />
-            Full Name: {firstName} {lastName}
-          </>
-        )}
+        <button type="submit">Submit</button>
       </form>
+
+      {/* IMPORTANT: render only when fullName exists */}
+      {fullName && <p>{fullName}</p>}
     </div>
   );
 }
