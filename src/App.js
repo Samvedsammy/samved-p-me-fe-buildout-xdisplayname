@@ -18,32 +18,44 @@ function App() {
 
   return (
     <div>
-      <h2>Full Name Display</h2>
+      <h1>Full Name Display</h1>
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+        {/* First Name row */}
+        <label>
+          First Name:&nbsp;
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </label>
 
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+        <br />
 
+        {/* Last Name row */}
+        <label>
+          Last Name:&nbsp;
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </label>
+
+        <br />
+
+        {/* Button */}
         <button
           type="submit"
           id="next"
           name="next"
           data-testid="next"
         >
-          Next
+          Submit
         </button>
 
+        {/* Output */}
         {showResult && (
           <>
             <br />
